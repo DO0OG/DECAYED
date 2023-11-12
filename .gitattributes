@@ -1,1 +1,2 @@
 DECAYED/Assets/TerrainDemoScene_URP/** filter=lfs diff=lfs merge=lfs -text
+DECAYED/Assets/JohnFarmer/** filter=lfs diff=lfs merge=lfs -text
