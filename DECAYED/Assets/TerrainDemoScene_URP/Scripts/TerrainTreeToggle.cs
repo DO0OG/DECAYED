@@ -1,26 +1,3 @@
-using UnityEngine;
-
-public class TerrainTreeToggle : MonoBehaviour
-{
-    private void OnEnable()
-    {
-        var terrains = Object.FindObjectsOfType<Terrain>();
-        foreach (Terrain terrain in terrains)
-        {
-            terrain.drawTreesAndFoliage = false;
-        }
-
-        RenderSettings.fogDensity = (float)0.0001;
-    }
-
-    private void OnDisable()
-    {
-        var terrains = Object.FindObjectsOfType<Terrain>();
-        foreach (Terrain terrain in terrains)
-        {
-            terrain.drawTreesAndFoliage = true;
-        }
-
-        RenderSettings.fogDensity = (float)0.0005;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e76c42d5e6874ffcdced965c909d0193f9d10e457963ea2b2ecd15e4fcc0175f
+size 632
