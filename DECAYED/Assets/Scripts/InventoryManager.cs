@@ -24,7 +24,10 @@ public class InventoryManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        ItemContent = GameObject.Find("Inventory_Canvas/BG/Inventory/Viewport/Content").transform;
+        if(ItemContent == null)
+        {
+            ItemContent = GameObject.Find("Inventory_Canvas/BG/Inventory/Viewport/Content").transform;
+        }
     }
 
     public void Add(Item item)

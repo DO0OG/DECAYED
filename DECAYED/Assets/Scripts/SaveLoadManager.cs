@@ -66,21 +66,24 @@ public class SaveLoadManager : MonoBehaviour
     private static SaveLoadManager instance;
 
     [SerializeField]
-    private Transform player;
-    private Transform cam;
-    private Transform tracker;
-    private Transform FF;
-    private NavMeshAgent navMeshAgent;
-    private Player_Move PM;
-    private Player_Health PH;
-    private InventoryManager IM;
-    private CanvasGroup canvasGroup;
+    public Transform player;
+    public Transform cam;
+    public Transform tracker;
+    public Transform FF;
+    public NavMeshAgent navMeshAgent;
+    public Player_Move PM;
+    public Player_Health PH;
+    public InventoryManager IM;
+    public CanvasGroup canvasGroup;
 
-    private string saveFilePath;
-    private string inventoryFilePath;
+    public string saveFilePath;
+    public string inventoryFilePath;
 
     private void Awake()
     {
+        IM = FindObjectOfType<InventoryManager>();
+        IM.ItemContent = GameObject.Find("Inventory_Canvas/BG/Inventory/Viewport/Content").transform;
+
         //Singleton method
         if (instance == null)
         {

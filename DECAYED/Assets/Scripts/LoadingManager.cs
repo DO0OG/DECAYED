@@ -34,6 +34,7 @@ public class LoadingManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (Instance != this)
         {
             Destroy(gameObject);
@@ -83,6 +84,14 @@ public class LoadingManager : MonoBehaviour
             SLM = FindObjectOfType<SaveLoadManager>();
             SLM.Load();
             PlayerPrefs.SetInt("isSave", 0);
+            SLM.Save();
+        }
+        if (PlayerPrefs.GetInt("isSave") == 3)
+        {
+            SLM = FindObjectOfType<SaveLoadManager>();
+            SLM.LoadInv();
+            PlayerPrefs.SetInt("isSave", 0);
+            SLM.Save();
         }
     }
 

@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public Canvas MainCanvas;
     public Canvas SettingCanvas;
 
+    public InventoryManager IM;
+
     private string saveFilePath;
 
     private void Awake()
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         PauseWindow = GameObject.Find("Pause_Canvas");
+        IM = FindObjectOfType<InventoryManager>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -89,6 +92,11 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         DeactivateAllObjects();
+
+        if(IM.Items != null)
+        {
+            IM.Items.Clear();
+        }
 
         // 비동기로 씬 로드
         LoadingManager.Instance.LoadScene("Chap1");
