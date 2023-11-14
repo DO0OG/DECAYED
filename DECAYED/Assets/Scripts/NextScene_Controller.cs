@@ -8,32 +8,36 @@ public class NextScene_Controller : MonoBehaviour
 
     public SaveLoadManager SLM;
 
+    public bool isTrig = false;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        isTrig = false;
         SLM = FindObjectOfType<SaveLoadManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.T))
+        if(SLM == null)
         {
-            PlayerPrefs.SetInt("isSave", 2);
+            SLM = FindObjectOfType<SaveLoadManager>();
+        }
+        if (isTrig)
+        {
+            isTrig = false;
+
+            SLM.Save();
+
+            PlayerPrefs.SetInt("isSave", 3);
 
             LoadingManager.Instance.LoadScene("Chap2");
-
-            PlayerPrefs.SetInt("isSave", 1);
         }
-
      }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        PlayerPrefs.SetInt("isSave", 2);
-
-        LoadingManager.Instance.LoadScene("Chap2");
-
-        PlayerPrefs.SetInt("isSave", 1);
+        isTrig = true;
     }
 }
