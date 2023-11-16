@@ -155,7 +155,7 @@ public class Player_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool hasFlashlight = IM.Items.Exists(item => item.itemName == "Flashlight");
+        bool hasFlashlight = IM.Items.Exists(item => item.itemName == "손전등");
 
         //땅 체크
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.64f + 0.2f, whatIsGround);
@@ -321,7 +321,7 @@ public class Player_Move : MonoBehaviour
                 itemPickup.Pickup();
                 grabSource.volume = 0.03f;
                 grabSource.PlayOneShot(grabSound);
-                if (itemPickup.Item.itemName == "Flashlight")
+                if (itemPickup.Item.itemName == "손전등")
                 {
                     hasFlash = true;
                     isFlash = true;
@@ -329,8 +329,8 @@ public class Player_Move : MonoBehaviour
                     flashBarCanvas.alpha = 1f;
                     CancelInvoke("G_ResetText");
                     CancelInvoke("P_ResetText");
-                    G_Text.text = "PRESS F TO TURN ON/OFF THE FLASHLIGHT\nHOLD RIGHT CLICK TO RECHARGE";
-                    P_Text.text = "This is old, but it still works.";
+                    G_Text.text = "F를 눌러 손전등을 키거나 끌 수 있습니다.\n우클릭을 유지해 손전등을 충전할 수 있습니다.";
+                    P_Text.text = "낡긴 했지만 아직 쓸만해.";
                     Obj_Text.text = "";
                     Invoke("G_ResetText", 8f);
                     Invoke("P_ResetText", 8f);
@@ -365,7 +365,7 @@ public class Player_Move : MonoBehaviour
 
     public void FlashFunc()
     {
-        bool hasFlashlight = IM.Items.Exists(item => item.itemName == "Flashlight");
+        bool hasFlashlight = IM.Items.Exists(item => item.itemName == "손전등");
 
         if (hasFlashlight)
         {
@@ -682,7 +682,7 @@ public class Player_Move : MonoBehaviour
             {
                 CancelInvoke("G_ResetText");
                 CancelInvoke("P_ResetText");
-                P_Text.text = "I should take the flashlight. It's behind the truck";
+                P_Text.text = "너무 어둡다. 트럭에서 손전등을 챙겨오자.";
                 Invoke("G_ResetText", 8f);
                 Invoke("P_ResetText", 8f);
             }

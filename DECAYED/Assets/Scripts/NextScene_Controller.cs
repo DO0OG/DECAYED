@@ -24,7 +24,7 @@ public class NextScene_Controller : MonoBehaviour
         {
             SLM = FindObjectOfType<SaveLoadManager>();
         }
-        if (isTrig)
+        if (isTrig || Input.GetKeyDown(KeyCode.T))
         {
             isTrig = false;
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Prescription Key
   m_EditorClassIdentifier: 
   id: 2
-  itemName: Door Key
+  itemName: "\uC5F4\uC1E0"
   value: 2
-  itemInfo: Prescription Room Door Key
+  itemInfo: "\uCC98\uBC29\uC2E4 \uBB38 \uC5F4\uC1E0"
   icon: {fileID: 21300000, guid: 62aeff9e9767e954a937ea8da32c8a3e, type: 3}
