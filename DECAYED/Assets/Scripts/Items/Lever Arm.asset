@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lever Arm
   m_EditorClassIdentifier: 
   id: 4
-  itemName: Lever Arm
+  itemName: "\uB808\uBC84 \uC190\uC7A1\uC774"
   value: 4
-  itemInfo: Knife Switch's Lever Arm
+  itemInfo: "\uB098\uC774\uD504 \uC2A4\uC704\uCE58\uC758 \uB808\uBC84 \uC190\uC7A1\uC774"
   icon: {fileID: 21300000, guid: d90993b2919affb4497a36940d2d2a48, type: 3}

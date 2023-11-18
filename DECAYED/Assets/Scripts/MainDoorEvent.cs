@@ -38,7 +38,7 @@ public class MainDoorEvent : MonoBehaviour
                 eventDoor.GetComponent<AudioSource>().volume = 0.5f;
                 eventDoor.GetComponent<AudioSource>().Play();
             }
-            PM.P_Text.text = "What the... Isn't that a front door sound..?";
+            PM.P_Text.text = "무슨... 입구에서 난 소리같은데..?";
             PM.Invoke("P_ResetText", 5f);
         }
         isTrig = true;

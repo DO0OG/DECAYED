@@ -107,8 +107,8 @@ public class SaveLoadManager : MonoBehaviour
             Save();
             if (SceneManager.GetActiveScene().name == "Chap1")
             {
-                PM.G_Text.text = "OBJECTIVE :\nTAKE THE FLASHLIGHT BEHIND THE TRUCK";
-                PM.Obj_Text.text = "TAKE THE FLASHLIGHT BEHIND THE TRUCK";
+                PM.G_Text.text = "목표 :\n트럭에서 손전등 챙기기";
+                PM.Obj_Text.text = "트럭에서 손전등 챙기기";
                 PM.Invoke("G_ResetText", 10f);
             }
             PlayerPrefs.SetInt("isSave", 0);

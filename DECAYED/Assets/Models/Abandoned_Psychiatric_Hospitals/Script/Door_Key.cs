@@ -63,7 +63,7 @@ public class Door_Key : MonoBehaviour
                         IM.Remove(item);
                         Audio.PlayOneShot(keySound);
                         Invoke("ChangeStatus", 1.5f);
-                        PM.P_Text.text = "Door unlocked.";
+                        PM.P_Text.text = "열쇠를 사용했다.";
                         PM.Invoke("P_ResetText", 5f);
                         break;
                     }
@@ -96,7 +96,7 @@ public class Door_Key : MonoBehaviour
                 Audio.pitch = 1.25f;
                 Audio.volume = 0.1f;
                 Audio.Play();
-                PM.P_Text.text = "It's locked. I need a key.";
+                PM.P_Text.text = "잠겨있다. 열쇠가 필요해.";
                 PM.Invoke("P_ResetText", 5f);
                 playSound = false;
             }

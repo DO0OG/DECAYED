@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FlashLight
   m_EditorClassIdentifier: 
   id: 1
-  itemName: Flashlight
+  itemName: "\uC190\uC804\uB4F1"
   value: 1
-  itemInfo: It's an old flashlight. The battery can be recharged by shaking it.
+  itemInfo: "\uB0A1\uC740 \uC190\uC804\uB4F1. \uD754\uB4E4\uC5B4\uC11C \uBC30\uD130\uB9AC\uB97C
+    \uCDA9\uC804\uD560 \uC218 \uC788\uB2E4."
   icon: {fileID: 21300000, guid: 6990f03cb17d8b849a35ea9329329d84, type: 3}

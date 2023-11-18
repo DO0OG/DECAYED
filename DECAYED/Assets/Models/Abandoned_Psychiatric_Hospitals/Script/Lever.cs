@@ -82,7 +82,7 @@ public class Lever : MonoBehaviour
                         leverArm.SetActive(true);
                         Audio.PlayOneShot(keySound);
                         Invoke("ChangeStatus", 1.5f);
-                        PM.P_Text.text = "Great. It's perfectly fit.";
+                        PM.P_Text.text = "레버 손잡이를 부착했다.";
                         PM.Invoke("P_ResetText", 5f);
                         break;
                     }
@@ -107,7 +107,7 @@ public class Lever : MonoBehaviour
 
         if (playSound && !isUnlock && !hasKey)
         {
-            PM.P_Text.text = "It's not work. I need something to connect.";
+            PM.P_Text.text = "작동하지 않는다. 연결할 무언가가 필요해.";
             PM.Invoke("P_ResetText", 5f);
             playSound = false;
         }

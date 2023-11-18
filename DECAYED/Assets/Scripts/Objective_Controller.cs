@@ -39,7 +39,7 @@ public class Objective_Controller : MonoBehaviour
 
     public void Set_G(string text)
     {
-        G_Text.text = "OBJECTIVE :\n" + text;
+        G_Text.text = "∏Ò«• :\n" + text;
     }
 
     public void Set_P(string text)
