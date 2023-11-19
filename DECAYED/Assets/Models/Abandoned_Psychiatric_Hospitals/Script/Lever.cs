@@ -72,6 +72,13 @@ public class Lever : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && OL.enabled && !PM.isPause)
         {
+            if (!isUnlock && !hasKey)
+            {
+                PM.P_Text.text = "작동하지 않는다. 연결할 무언가가 필요해.";
+                PM.Invoke("P_ResetText", 5f);
+                playSound = false;
+            }
+
             if (hasKey)
             {
                 foreach (var item in IM.Items)
@@ -102,13 +109,6 @@ public class Lever : MonoBehaviour
             Audio.pitch = 1.25f;
             Audio.volume = 0.1f;
             Audio.Play();
-            playSound = false;
-        }
-
-        if (playSound && !isUnlock && !hasKey)
-        {
-            PM.P_Text.text = "작동하지 않는다. 연결할 무언가가 필요해.";
-            PM.Invoke("P_ResetText", 5f);
             playSound = false;
         }
 

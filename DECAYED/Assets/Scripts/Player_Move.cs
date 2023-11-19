@@ -409,7 +409,7 @@ public class Player_Move : MonoBehaviour
                 //배터리 소모
                 if (isFlash && batteryLife > 0)
                 {
-                    batteryLife -= batteryDepletionRate * diff * Time.deltaTime;
+                    batteryLife -= batteryDepletionRate * (diff/1.5f) * Time.deltaTime;
                     UpdateFlashlightIntensity();
 
                     //슬라이더 색을 서서히 빨간색으로 변경

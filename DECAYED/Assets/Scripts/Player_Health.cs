@@ -29,6 +29,7 @@ public class Player_Health : MonoBehaviour
     public TrackerAI TAI;
     public SaveLoadManager SLM;
     public GameManager GM;
+    public Canvas END;
     private string saveFilePath;
 
     public float diff = 1;
@@ -57,14 +58,15 @@ public class Player_Health : MonoBehaviour
 
     private void SetMaxHealth()
     {
+        // 데모버전은 그냥 무조건 한 번에 죽도록
         if (diff == 1)
         {
-            maxHP = 150;
+            maxHP = 50;
             currentHealth = maxHP;
         }
         else if (diff == 1.5)
         {
-            maxHP = 100;
+            maxHP = 50;
             currentHealth = maxHP;
         }
         else if (diff == 2)
@@ -130,26 +132,34 @@ public class Player_Health : MonoBehaviour
             JC.SetActive(true);
             PC.MoveHeadBob();
 
+            StartCoroutine(WaitFirst());
+        }
+    }
+
+    IEnumerator WaitFirst()
+    {
+        yield return new WaitForSeconds(2.85f); //대기 시간만큼 기다림
+
+        if(END != null)
+        {
+            END.gameObject.SetActive(true);
             StartCoroutine(WaitAndResume());
         }
     }
 
     IEnumerator WaitAndResume()
     {
-        yield return new WaitForSeconds(2.85f); //대기 시간만큼 기다림
+        yield return new WaitForSeconds(5f); //대기 시간만큼 기다림
 
-        saveFilePath = Path.Combine(Application.persistentDataPath, "saveData.dat");
-
-        IFormatter formatter = new BinaryFormatter();
-        Stream stream = new FileStream(saveFilePath, FileMode.Open, FileAccess.Read);
-        SaveData saveData = (SaveData)formatter.Deserialize(stream);
-        stream.Close();
+        isDead = false;
 
         GM.DeactivateAllObjects();
 
-        PlayerPrefs.SetInt("isSave", 2);
+        PlayerPrefs.SetInt("isSave", 1);
+
+        Application.Quit();
 
         // 비동기로 씬 로드
-        LoadingManager.Instance.LoadScene(saveData.currentSceneName);
+        //LoadingManager.Instance.LoadScene("MainMenu");
     }
 }
