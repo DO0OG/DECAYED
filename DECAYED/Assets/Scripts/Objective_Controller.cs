@@ -30,8 +30,8 @@ public class Objective_Controller : MonoBehaviour
     private void OnDestroy()
     {
         CancelInvoke();
-        Invoke("G_ResetText", 8f);
-        Invoke("P_ResetText", 8f);
+        PM.Invoke("G_ResetText", 8f);
+        PM.Invoke("P_ResetText", 8f);
         Set_G(G_String);
         Set_P(P_String);
         Set_Obj(Obj_String);

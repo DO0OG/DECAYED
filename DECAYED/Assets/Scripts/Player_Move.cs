@@ -110,6 +110,8 @@ public class Player_Move : MonoBehaviour
 
     public Rigidbody rb;
 
+    public TrackerAI TAI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,6 +152,8 @@ public class Player_Move : MonoBehaviour
 
         PH = FindObjectOfType<Player_Health>();
         SLM = SaveLoadManager.GetInstance();
+
+        TAI = FindObjectOfType<TrackerAI>();
     }
 
     // Update is called once per frame
@@ -409,7 +413,7 @@ public class Player_Move : MonoBehaviour
                 //배터리 소모
                 if (isFlash && batteryLife > 0)
                 {
-                    batteryLife -= batteryDepletionRate * diff * Time.deltaTime;
+                    batteryLife -= batteryDepletionRate * (diff/1.5f) * Time.deltaTime;
                     UpdateFlashlightIntensity();
 
                     //슬라이더 색을 서서히 빨간색으로 변경
@@ -655,6 +659,41 @@ public class Player_Move : MonoBehaviour
             {
                 PF.LandStep();
                 forLand = false;
+            }
+        }
+        if (collision.collider.CompareTag("EndPoint"))
+        {
+            int reportItemCount = 0; // "보고서" 아이템 개수를 세기 위한 변수
+
+            foreach (var item in IM.Items)
+            {
+                if (item.itemInfo.Contains("보고서"))
+                {
+                    reportItemCount++;
+                }
+            }
+
+            // "보고서" 아이템 개수에 따라 분기
+            if (reportItemCount == 6)
+            {
+                // 모든 "보고서" 아이템이 있을 경우의 동작
+                Debug.Log("보고서 아이템이 6개 모두 있습니다.");
+                CancelInvoke("P_ResetText");
+                P_Text.text = $"보고서를 모두 모았다. 이제 나가야겠어.";
+                TAI.gameObject.transform.position = new Vector3(306, 1.25f, 323);
+                TAI.gameObject.transform.rotation = new Quaternion(0, 180, 0, 0);
+                Invoke("P_ResetText", 8f);
+            }
+            else
+            {
+                // 부족한 경우의 동작
+                CancelInvoke("G_ResetText");
+                CancelInvoke("P_ResetText");
+                P_Text.text = $"아직 보고서를 모두 찾지 못했다.";
+                G_Text.text = $"남은 보고서 갯수 : {6 - reportItemCount}";
+                // Debug.Log("보고서 아이템이 부족합니다. 현재 개수: " + reportItemCount);
+                Invoke("G_ResetText", 8f);
+                Invoke("P_ResetText", 8f);
             }
         }
     }
