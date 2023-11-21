@@ -10,6 +10,7 @@ public class Objective_Controller1 : MonoBehaviour
     public TextMeshProUGUI Obj_Text;
 
     public Player_Move PM;
+    public InventoryManager IM;
 
     public string G_String;
     public string P_String;
@@ -19,6 +20,7 @@ public class Objective_Controller1 : MonoBehaviour
     void Start()
     {
         PM = FindObjectOfType<Player_Move>();
+        IM = FindObjectOfType<InventoryManager>();
     }
 
     // Update is called once per frame
@@ -54,9 +56,5 @@ public class Objective_Controller1 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
-        {
-            return;
-        }
     }
 }
