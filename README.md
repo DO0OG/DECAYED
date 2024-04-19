@@ -1,4 +1,2 @@
 # DECAYED
  First Unity Horror Game
-
- ~~THIS PROJECT TOTALLY FUCKED UP~~
